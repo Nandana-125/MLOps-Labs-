@@ -11,7 +11,7 @@ import joblib
 
 
 def train_and_save():
-    # 1) Load dataset (different from Iris)
+    # 1) Load dataset 
     wine = load_wine()
     X, y = wine.data, wine.target
 
@@ -20,7 +20,7 @@ def train_and_save():
         X, y, test_size=0.2, random_state=42, stratify=y
     )
 
-    # 3) Model pipeline (different from RandomForest)
+    # 3) Model pipeline 
     #    Scaling + Logistic Regression
     model = Pipeline(
         steps=[
@@ -40,7 +40,7 @@ def train_and_save():
     # 6) Save model
     joblib.dump(model, "wine_model.pkl")
 
-    # 7) Save metrics (extra artifact so it’s clearly “your version”)
+    # 7) Save metrics 
     metrics = {
         "dataset": "sklearn.load_wine",
         "model": "StandardScaler + LogisticRegression",
