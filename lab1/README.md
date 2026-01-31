@@ -1,7 +1,7 @@
 # Lab 1 - Dockerized ML Training (Wine + Logistic Regression)
 
 This lab trains a Logistic Regression classifier on the sklearn Wine dataset,
-then saves:
+then saves(Dockerlab/lab1):
 - `wine_model.pkl` (trained model)
 - `metrics.json` (accuracy + classification report)
 
