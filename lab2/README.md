@@ -1,76 +1,208 @@
-# Lab 2 — Constraint-Based Study Planner (MLOps Lab)
+# Lab 2 — Constraint-Based Study Planner (MLOps)
 
-This lab implements a mini scheduling engine that takes a list of study/tasks, validates constraints (IDs, durations, dependencies), detects dependency cycles, and produces a feasible time-block schedule.
+This lab implements a constraint-based scheduling engine that generates a feasible study plan from structured task input.
 
-- Supports **task dependencies** (must do A before B)
-- Detects **cycles** and reports them as an error
-- Schedules only inside a **daily work window** (example: 18:00–23:00)
-- Skips **blocked time** (example: class, shift, gym)
-- Can **split a task** into multiple blocks when a blocked interval interrupts the available time
+Unlike a basic calculator-style lab, this project supports:
+
+- Task dependencies (must complete A before B)
+- Cycle detection in dependency graphs
+- Scheduling within a daily work window
+- Avoiding blocked time intervals (e.g., class, shift, gym)
+- Automatic task splitting when blocked time interrupts availability
+- Deadline warnings when tasks cannot be completed on time
+
+---
 
 ## Project Structure
 
+```
 lab2/
-src/
-planner.py # scheduling engine + validation + cycle detection
-main.py # CLI entrypoint that loads JSON and writes output JSON
-test/
-test_pytest_planner.py
-test_unittest_planner.py
-data/
-sample_tasks.json # sample input request
-requirements.txt
+│
+├── src/
+│   ├── planner.py              # Core scheduling engine
+│   └── main.py                 # CLI entrypoint
+│
+├── test/
+│   ├── test_pytest_planner.py   # Pytest test suite
+│   └── test_unittest_planner.py # Unittest test suite
+│
+├── data/
+│   ├── sample_tasks.json        # Example input
+│   └── output_schedule.json     # Generated output (ignored by git)
+│
+└── requirements.txt
+```
 
-## Setup (from repo root)
+---
 
-## 1 Create + activate virtual environment
+## Setup Instructions
 
+From the repository root:
+
+### 1. Create and activate a virtual environment
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
+```
 
-## 2 Install Dependencies
+### 2. Install dependencies
 
+```bash
 pip install -r lab2/requirements.txt
+```
 
-## 3 Run the Scheduler
+---
 
-From repo root :
+## 3. Running the Scheduler
 
+From the repository root:
+
+```bash
 python lab2/src/main.py
+```
 
-This reads:
+The program will:
 
+1. Read input from:
+
+```
 lab2/data/sample_tasks.json
+```
 
-and writes:
+2. Generate a schedule and write it to:
 
+```
 lab2/data/output_schedule.json
+```
 
-## 4 Input Format (JSON)
+The output file is automatically ignored in version control since it is generated.
+
+---
+
+## How the Scheduler Works
+
+### 1. Validation
+
+- Ensures task IDs are unique
+- Ensures durations are positive
+- Verifies dependencies exist
+- Detects circular dependencies (cycles)
+
+If a cycle is detected, an error is raised and scheduling stops.
+
+---
+
+### 2. Task Ordering
+
+Tasks are ordered using:
+
+1. Dependency constraints
+2. Earliest deadline first
+3. Higher priority first (tie-breaker)
+
+This guarantees a valid execution order.
+
+---
+
+### 3. Time Allocation
+
+Scheduling respects:
+
+- `planning_start`
+- Daily `work_window`
+- `blocked` time intervals
+
+Tasks are placed only in available time slots.
+
+If a blocked interval interrupts a task, it is automatically split across available segments.
+
+---
+
+### 4. Deadline Warnings
+
+If a task finishes after its deadline, the scheduler still completes it but adds a warning in the output report.
+
+---
+
+## Input Format (sample_tasks.json)
 
 Key fields:
 
-planning_start: ISO datetime when scheduling begins
+```json
+{
+  "planning_start": "2026-02-13T18:00:00",
+  "work_window": { "start": "18:00", "end": "23:00" },
+  "blocked": [{ "start": "...", "end": "...", "label": "Gym" }],
+  "tasks": [
+    {
+      "id": "t1",
+      "title": "Task name",
+      "duration_min": 45,
+      "deadline": "2026-02-14T21:00:00",
+      "priority": 3,
+      "depends_on": []
+    }
+  ]
+}
+```
 
-work_window: daily time window during which work can be scheduled
+---
 
-blocked: list of time intervals to avoid
+## Running Tests
 
-tasks: each task has id, title, duration_min, deadline, priority, depends_on
+### Pytest
 
-See lab2/data/sample_tasks.json for a complete example.
-
-##  5 RUN TESTS
-
+```bash
 pytest -q
+```
 
+### Unittest
+
+```bash
 python -m unittest lab2.test.test_unittest_planner -v
+```
 
-## 6  GITHUB Actions (CI)
+Both frameworks test:
 
-This repo includes two workflows that run automatically on push / pull request to main:
+- Validation logic
+- Cycle detection
+- Topological ordering
+- Blocked time handling
+- Task splitting behavior
 
-Lab2 - Pytest
+---
 
-Lab2 - Unittest
-They install lab2/requirements.txt and run both test suites in CI.
+## Continuous Integration (GitHub Actions)
+
+Two workflows are configured:
+
+- **Lab2 - Pytest**
+- **Lab2 - Unittest**
+
+They automatically run on:
+
+- Push to `main`
+- Pull requests targeting `main`
+
+The workflows:
+
+- Install dependencies from `lab2/requirements.txt`
+- Execute both test suites
+- Fail if any test fails
+
+---
+
+## Summary
+
+This lab demonstrates:
+
+- Dependency graph validation
+- Cycle detection using DFS
+- Topological sorting
+- Constraint-based scheduling
+- Time window segmentation
+- Automated test coverage
+- CI integration with GitHub Actions
+
+The system produces a realistic, constraint-aware study schedule from structured task input.
