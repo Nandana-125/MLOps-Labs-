@@ -1,0 +1,43 @@
+{
+  "timezone": "America/New_York",
+  "planning_start": "2026-02-13T18:00:00",
+  "work_window": { "start": "18:00", "end": "23:00" },
+  "blocked": [
+    { "start": "2026-02-13T19:30:00", "end": "2026-02-13T20:15:00", "label": "Gym" },
+    { "start": "2026-02-14T18:30:00", "end": "2026-02-14T20:30:00", "label": "Shift" }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "title": "Read lecture notes",
+      "duration_min": 45,
+      "deadline": "2026-02-14T21:00:00",
+      "priority": 2,
+      "depends_on": []
+    },
+    {
+      "id": "t2",
+      "title": "Draft lab2 README",
+      "duration_min": 35,
+      "deadline": "2026-02-14T22:00:00",
+      "priority": 3,
+      "depends_on": ["t1"]
+    },
+    {
+      "id": "t3",
+      "title": "Implement cycle detection + topological order",
+      "duration_min": 60,
+      "deadline": "2026-02-15T21:00:00",
+      "priority": 5,
+      "depends_on": ["t1"]
+    },
+    {
+      "id": "t4",
+      "title": "Write pytest + unittest suite",
+      "duration_min": 75,
+      "deadline": "2026-02-15T22:00:00",
+      "priority": 4,
+      "depends_on": ["t3"]
+    }
+  ]
+}
