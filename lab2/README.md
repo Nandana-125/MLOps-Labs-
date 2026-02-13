@@ -205,4 +205,3 @@ This lab demonstrates:
 - Automated test coverage
 - CI integration with GitHub Actions
 
-The system produces a realistic, constraint-aware study schedule from structured task input.
