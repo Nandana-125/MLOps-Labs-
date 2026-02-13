@@ -23,16 +23,16 @@ requirements.txt
 
 ## Setup (from repo root)
 
-### 1 Create + activate virtual environment
+## 1 Create + activate virtual environment
 
 python3 -m venv .venv
 source .venv/bin/activate
 
-### 2 Install Dependencies
+## 2 Install Dependencies
 
 pip install -r lab2/requirements.txt
 
-### Run the Scheduler
+## 3 Run the Scheduler
 
 From repo root :
 
@@ -46,7 +46,7 @@ and writes:
 
 lab2/data/output_schedule.json
 
-### Input Format (JSON)
+## 4 Input Format (JSON)
 
 Key fields:
 
@@ -60,13 +60,13 @@ tasks: each task has id, title, duration_min, deadline, priority, depends_on
 
 See lab2/data/sample_tasks.json for a complete example.
 
-### RUN TESTS
+##  5 RUN TESTS
 
 pytest -q
 
 python -m unittest lab2.test.test_unittest_planner -v
 
-### GITHUB Actions (CI)
+## 6  GITHUB Actions (CI)
 
 This repo includes two workflows that run automatically on push / pull request to main:
 
