@@ -9,3 +9,6 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# Lab2 generated outputs
+lab2/data/output_schedule.json
