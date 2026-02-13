@@ -2,7 +2,7 @@
 
 This lab implements a constraint-based scheduling engine that generates a feasible study plan from structured task input.
 
-Unlike a basic calculator-style lab, this project supports:
+This project supports:
 
 - Task dependencies (must complete A before B)
 - Cycle detection in dependency graphs
