@@ -3,12 +3,12 @@
 ## Overview
 This lab implements an Apache Airflow DAG pipeline that performs K-Means clustering on the **Mall Customer Segmentation** dataset. The pipeline loads data, preprocesses it, builds a clustering model, and determines the optimal number of clusters using the elbow method.
 
-## Modifications from Original Lab
-- **Different dataset**: Uses Mall Customer Segmentation data (Age, Annual Income, Spending Score) instead of the Credit Card dataset (Balance, Purchases, Credit Limit)
-- **Different clustering features**: `Age`, `Annual Income (k$)`, `Spending Score (1-100)`
-- **Reduced K range**: Iterates K from 1–19 (instead of 1–49) since the dataset has only 200 rows
-- **Custom DAG name**: `Mall_Customer_Segmentation`
-- **Custom Airflow credentials**: Personalized username/password
+## What this lab contains 
+- **Dataset**: Uses Mall Customer Segmentation data (Age, Annual Income, Spending Score) instead of the Credit Card dataset (Balance, Purchases, Credit Limit)
+- **Clustering features**: `Age`, `Annual Income (k$)`, `Spending Score (1-100)`
+- **K range**: Iterates K from 1–19 since the dataset has only 200 rows
+- **DAG name**: `Mall_Customer_Segmentation`
+- **Airflow credentials**: Personalized username/password
 
 ## Project Structure
 ```
