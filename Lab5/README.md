@@ -4,7 +4,6 @@
 
 This lab explores Apache Beam for processing structured CSV data. Instead of the standard word count example from the original Apache Beam lab, I built a pipeline that reads an IMDb movies dataset and runs multiple aggregations on it — things like average ratings by genre, movie counts, budget trends, and revenue breakdowns.
 
-The idea was to show that Beam isn't limited to text processing and works well with tabular data too.
 
 ## Dataset
 
