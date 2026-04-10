@@ -29,7 +29,7 @@ feature {
 feature {
   name: "parental level of education"
   type: BYTES
-  domain: "parental_education"
+  domain: "parental_level_of_education"
   presence {
     min_fraction: 1.0
     min_count: 1
@@ -57,7 +57,7 @@ feature {
 feature {
   name: "test preparation course"
   type: BYTES
-  domain: "test_prep"
+  domain: "test_preparation_course"
   presence {
     min_fraction: 1.0
     min_count: 1
@@ -121,21 +121,21 @@ string_domain {
   value: "group E"
 }
 string_domain {
-  name: "parental_education"
-  value: "some high school"
-  value: "high school"
-  value: "some college"
+  name: "parental_level_of_education"
   value: "associate's degree"
   value: "bachelor's degree"
+  value: "high school"
   value: "master's degree"
+  value: "some college"
+  value: "some high school"
 }
 string_domain {
   name: "lunch"
-  value: "standard"
   value: "free/reduced"
+  value: "standard"
 }
 string_domain {
-  name: "test_prep"
-  value: "none"
+  name: "test_preparation_course"
   value: "completed"
+  value: "none"
 }
