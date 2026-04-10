@@ -15,18 +15,19 @@ The [Student Performance in Exams](https://www.kaggle.com/datasets/spscientist/s
 The data is split into train (70%), eval (15%), and serving (15%) sets.
 
 ## Project Structure
-Lab6/
-├── README.md
-├── MLMD_Student_Performance.ipynb   # Main notebook
-├── schema.pbtxt                      # Generated schema file
-├── StudentsPerformance.csv           # Raw dataset
-├── .gitignore
-├── img/
-│   └── mlmd_overview.png             # MLMD architecture diagram
-└── data/
-├── train/data.csv                # Training split (700 rows)
-├── eval/data.csv                 # Evaluation split (150 rows)
-└── serving/data.csv              # Serving split (150 rows)
+
+    Lab6/
+    ├── README.md
+    ├── MLMD_Student_Performance.ipynb   # Main notebook
+    ├── schema.pbtxt                     # Generated schema file
+    ├── StudentsPerformance.csv          # Raw dataset
+    ├── .gitignore
+    ├── img/
+    │   └── mlmd_overview.png            # MLMD architecture diagram
+    └── data/
+        ├── train/data.csv               # Training split (700 rows)
+        ├── eval/data.csv                # Evaluation split (150 rows)
+        └── serving/data.csv             # Serving split (150 rows)
 
 ## Steps to Re-run the Lab
 
