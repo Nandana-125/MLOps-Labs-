@@ -1,0 +1,141 @@
+feature {
+  name: "gender"
+  type: BYTES
+  domain: "gender"
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "race/ethnicity"
+  type: BYTES
+  domain: "race_ethnicity"
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "parental level of education"
+  type: BYTES
+  domain: "parental_education"
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "lunch"
+  type: BYTES
+  domain: "lunch"
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "test preparation course"
+  type: BYTES
+  domain: "test_prep"
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "math score"
+  type: INT
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "reading score"
+  type: INT
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "writing score"
+  type: INT
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+string_domain {
+  name: "gender"
+  value: "female"
+  value: "male"
+}
+string_domain {
+  name: "race_ethnicity"
+  value: "group A"
+  value: "group B"
+  value: "group C"
+  value: "group D"
+  value: "group E"
+}
+string_domain {
+  name: "parental_education"
+  value: "some high school"
+  value: "high school"
+  value: "some college"
+  value: "associate's degree"
+  value: "bachelor's degree"
+  value: "master's degree"
+}
+string_domain {
+  name: "lunch"
+  value: "standard"
+  value: "free/reduced"
+}
+string_domain {
+  name: "test_prep"
+  value: "none"
+  value: "completed"
+}
